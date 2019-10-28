@@ -34,9 +34,9 @@ body{
 }
 #zip{
     position: absolute;
-    margin: 5% auto auto 66.5%;
+    margin: 5% auto auto 76.5%;
     height: 5%;
-    width: 30%;
+    width: 16%;
 }
 .alert{
     display: grid;
@@ -44,6 +44,7 @@ body{
     width: 100%;
     height: 124px;
     background-color: #F06161;
+    display: none;
 }
 .alert_head{
     margin-left: 20%;
@@ -71,21 +72,23 @@ body{
     display: grid;
     grid-template-rows: 1.5fr 1fr;
     background-color: #1C6FA3;
+    text-align: center;
 }
 .temp{
     font-size: 4em;
-    margin: auto;
+    margin: auto auto auto 25%;
+
 }
 .temp_details{
     margin: 0 auto;
     font-size: 1.3em;
-    text-align: center;
 }
 .current_description{
     display: grid;
     grid-template-rows: 2fr 1fr;
     background-color: #1C6FA3;
     height: 80%;
+    font-size: 1.3em;
 }
 .current_description_visuals{
     text-align: center;
@@ -111,7 +114,7 @@ body{
 .rain_icon{
     height: 30%;
     width: 30%;
-    margin-top: .8em
+    margin-top: 4em;
 }
 .wind_icon{
     height: 30%;
@@ -148,11 +151,12 @@ body{
     width: 50%;
     margin: auto;
 }
-.forecast_alert :last-of-type{
+.forecast_alert{
     background-color: #F06161;
     height: 2em;
     width: 100%;
     font-size: 1.2em;
+    display: none;
 }
 .forecast_data{
     display: grid;
