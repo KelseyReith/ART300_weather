@@ -27,18 +27,18 @@
     </head>
 
     <body>
+        <input placeholder="Enter Your ZIP Code" name="name" id="zip"/>
+        <p id="zip_display"></p>
         <div class="results" id="app">
             <div class="top">
                 <div class="location_time">
-                    <h1>{{city}}, KS {{location.zip}}</h1>
-                    <p style="font-size:1.5em;">October 15, 2019</p>
+                    <h1>{{city}}, {{location.state}} {{location.zip}}</h1>
+                    <p style="font-size:1.5em;">{{time.date}}</p>
                     <p style="font-size:1.5em;">{{time.hour_12}}:{{time.minute}} {{time.ampm}}</p>
                 </div>
                 <div class="latlon">
                     <p style="font-size:1.5em;">({{location.coord.lat}}, {{location.coord.lon}})</p>
                 </div>
-                <input placeholder="Enter Your ZIP Code" name="name" id="zip" />
-                <p id="zip_display"></p>
             </div>
             <div class="alert">
                 <div class="alert_head">
@@ -53,29 +53,29 @@
             <div class="now">
                 <div class="current_temp">
                     <div class="temp">
-                        <h1>78°F</h1>
+                        <h1>{{current.temp.current}}°F</h1>
                     </div>
                     <div class="temp_details">
                         <p>Feels like 72°</p>
-                        <p>78° / 34°</p>
+                        <p>{{current.temp.high}}° / {{current.temp.low}}°</p>
                     </div>
                 </div>
                 <div class="current_description">
                     <div class="current_description_visuals">
                         <img class="big_icon" src="/icons/rain.png" alt="Cloud with Rain"/>
-                        <p>Cloudy with a chance of rain.</p>
+                        <p>{{current.description_long}}</p>
                     </div>
                 </div>
                 <div class="current_details">
                     <div class="current_percipiation">
                         <p>70%</p>
                         <img class="rain_icon" src="icons/raindrop.png" alt="Raindrop"/>
-                        <p>5"</p>
+                        <p>{{current.rain}}{{current.snow}}</p>
                     </div>
                     <div class="forecast_gap"></div>
                     <div class="current_wind">
                         <img class="wind_icon" src="icons/wind.png" alt="Wind"/>
-                        <p>33mph S</p>
+                        <p>{{current.wind.speed}} {{current.wind.degree}}°</p>
                     </div>
                 </div>
             </div>
@@ -84,17 +84,17 @@
                     <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 1 -->
                     <div class="forecast_general">
-                        <p>Oct 14</p>
+                        <p>Day 1</p>
                         <img class="forecast_icon" src="icons/cloud.png" alt="Cloud"/>
-                        <p>78° / 34°</p>
-                        <p>Cloudy, severe weather</p>  
+                        <p>{{forecast[0].max_temp}}° / {{forecast[0].min_temp}}°</p>
+                        <p>{{forecast[0].weather.description}}</p>  
                     </div>
                     <div class="forecast_alert">
 
                     </div>
                     <div class="forecast_data">
                         <div class="forecast_data_topic">
-                            <p>Humidity</p>
+                            <p>Visibility</p>
                             <p>Air quality</p>
                             <p>Cloud cover</p>
                             <p>UV index</p>
@@ -104,10 +104,10 @@
                             <p>Tide</p>
                         </div>
                         <div class="forecast_data_result">
-                            <p>55%</p> <!-- humidity -->
+                            <p>{{forecast[0].vis}} mi</p> <!-- visibility -->
                             <p>Good</p> <!-- air quality -->
                             <p>Cloudy</p> <!-- cloud cover -->
-                            <p>2</p> <!-- UV index -->
+                            <p>{{forecast[0].uv}}</p> <!-- UV index -->
                             <p>7:36 am</p> <!-- sunrise -->
                             <p>6:49 pm</p> <!-- sunset -->
                             <p>Waning Gibbous</p> <!-- moon -->
@@ -118,17 +118,17 @@
                 <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 2 -->
                     <div class="forecast_general">
-                        <p>Oct 15</p>
+                        <p>Day 2</p>
                         <img class="forecast_icon" src="icons/sun.png" alt="Sun"/>
-                        <p>66° / 37°</p>
-                        <p>Sunny and clear</p>  
+                        <p>{{forecast[1].max_temp}}° / {{forecast[1].min_temp}}°</p>
+                        <p>{{forecast[1].weather.description}}</p>  
                     </div>
                     <div class="forecast_alert">
                         
                     </div>
                     <div class="forecast_data">
                         <div class="forecast_data_topic">
-                            <p>Humidity</p>
+                            <p>Visibility</p>
                             <p>Air quality</p>
                             <p>Cloud cover</p>
                             <p>UV index</p>
@@ -138,10 +138,10 @@
                             <p>Tide</p>
                         </div>
                         <div class="forecast_data_result">
-                            <p>55%</p> <!-- humidity -->
+                            <p>{{forecast[1].vis}} mi</p> <!-- visibility -->
                             <p>Good</p> <!-- air quality -->
                             <p>Clear</p> <!-- cloud cover -->
-                            <p>3</p> <!-- UV index -->
+                            <p>{{forecast[1].uv}}</p> <!-- UV index -->
                             <p>7:36 am</p> <!-- sunrise -->
                             <p>6:49 pm</p> <!-- sunset -->
                             <p>Waning Gibbous</p> <!-- moon -->
@@ -152,16 +152,16 @@
                 <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 3 -->
                     <div class="forecast_general">
-                        <p>Oct 16</p>
+                        <p>Day 3</p>
                         <img class="forecast_icon" src="icons/sun.png" alt="Sun"/>
-                        <p>60° / 41°</p>
-                        <p>Sunny, 10% chance of rain</p>  
+                        <p>{{forecast[2].max_temp}}° / {{forecast[2].min_temp}}°</p>
+                        <p>{{forecast[2].weather.description}}</p>  
                     </div>
                     <div class="forecast_alert">
                     </div>
                     <div class="forecast_data">
                         <div class="forecast_data_topic">
-                            <p>Humidity</p>
+                            <p>Visibility</p>
                             <p>Air quality</p>
                             <p>Cloud cover</p>
                             <p>UV index</p>
@@ -171,10 +171,10 @@
                             <p>Tide</p>
                         </div>
                         <div class="forecast_data_result">
-                            <p>55%</p> <!-- humidity -->
+                            <p>{{forecast[2].vis}} mi</p> <!-- visibility -->
                             <p>Good</p> <!-- air quality -->
                             <p>Clear</p> <!-- cloud cover -->
-                            <p>3</p> <!-- UV index -->
+                            <p>{{forecast[2].uv}}</p> <!-- UV index -->
                             <p>7:36 am</p> <!-- sunrise -->
                             <p>6:49 pm</p> <!-- sunset -->
                             <p>Waning Gibbous</p> <!-- moon -->
@@ -185,16 +185,16 @@
                 <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 4 -->
                     <div class="forecast_general">
-                        <p>Oct 17</p>
+                        <p>Day 4</p>
                         <img class="forecast_icon" src="icons/sun.png" alt="Sun"/>
-                        <p>74° / 55°</p>
-                        <p>Sunny and clear</p>
+                        <p>{{forecast[3].max_temp}}° / {{forecast[3].min_temp}}°</p>
+                        <p>{{forecast[3].weather.description}}</p>
                     </div>
                     <div class="forecast_alert">                       
                     </div>
                     <div class="forecast_data">
                         <div class="forecast_data_topic">
-                            <p>Humidity</p>
+                            <p>Visibility</p>
                             <p>Air quality</p>
                             <p>Cloud cover</p>
                             <p>UV index</p>
@@ -204,10 +204,10 @@
                             <p>Tide</p>
                         </div>
                         <div class="forecast_data_result">
-                            <p>55%</p> <!-- humidity -->
+                            <p>{{forecast[3].vis}} mi</p> <!-- visibility -->
                             <p>Good</p> <!-- air quality -->
                             <p>Clear</p> <!-- cloud cover -->
-                            <p>3</p> <!-- UV index -->
+                            <p>{{forecast[3].uv}}</p> <!-- UV index -->
                             <p>7:36 am</p> <!-- sunrise -->
                             <p>6:49 pm</p> <!-- sunset -->
                             <p>Waning Gibbous</p> <!-- moon -->
@@ -218,17 +218,17 @@
                 <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 5 -->
                     <div class="forecast_general">
-                        <p>Oct 18</p>
+                        <p>Day 5</p>
                         <img class="forecast_icon" src="icons/thunderstorm.png" alt="Cloud with lightning"/>
-                        <p>71° / 47°</p>
-                        <p>Partly cloudy, 90% chance of rain</p> 
+                        <p>{{forecast[4].max_temp}}° / {{forecast[4].min_temp}}°</p>
+                        <p>{{forecast[4].weather.description}}</p> 
                     </div>
                     <div class="forecast_alert">
                         <p style="margin: auto;">Severe thunderstorms</p>
                     </div>
                     <div class="forecast_data">
                         <div class="forecast_data_topic">
-                            <p>Humidity</p>
+                            <p>Visibility</p>
                             <p>Air quality</p>
                             <p>Cloud cover</p>
                             <p>UV index</p>
@@ -238,10 +238,10 @@
                             <p>Tide</p>
                         </div>
                         <div class="forecast_data_result">
-                            <p>55%</p> <!-- humidity -->
+                            <p>{{forecast[4].vis}} mi</p> <!-- visibility -->
                             <p>Good</p> <!-- air quality -->
                             <p>Partly</p> <!-- cloud cover -->
-                            <p>2</p> <!-- UV index -->
+                            <p>{{forecast[4].uv}}</p> <!-- UV index -->
                             <p>7:36 am</p> <!-- sunrise -->
                             <p>6:49 pm</p> <!-- sunset -->
                             <p>Waning Gibbous</p> <!-- moon -->
@@ -257,7 +257,7 @@
                     <div class="forecast_gap"></div>
                     <div class="data">
                         <p style="margin-left: 1em;">Humidity</p>
-                        <p style="text-align: center; font-size: 2em">55%</p>
+                        <p style="text-align: center; font-size: 2em">{{current.humidity}}%</p>
                     </div>
                     <div class="forecast_gap"></div>
                     <div class="data">
@@ -272,7 +272,7 @@
                     <div class="forecast_gap"></div>
                     <div class="data">
                         <p style="margin-left: 1em;">Pressure</p>
-                        <p style="text-align: center; font-size: 2em">28.69"</p>
+                        <p style="text-align: center; font-size: 2em">{{current.pressure}}"</p>
                     </div>
                     <div class="forecast_gap"></div>
                 </div>
@@ -280,7 +280,7 @@
                     <div class="forecast_gap"></div>
                     <div class="data">
                         <p style="margin-left: 1em;">Cloud cover</p>
-                        <p style="text-align: center; font-size: 2em">Cloudy</p>
+                        <p style="text-align: center; font-size: 2em">{{current.cloud_cover}}</p>
                     </div>
                     <div class="forecast_gap"></div>
                     <div class="data">
@@ -298,17 +298,17 @@
                     <div class="forecast_gap"></div>
                     <div class="data">
                         <p style="margin-left: 1em;">Sunrise</p>
-                        <p style="text-align: center; font-size: 2em">7:36 am</p>
+                        <p style="text-align: center; font-size: 2em">{{current.sunrise}}</p>
                     </div>
                     <div class="forecast_gap"></div>
                     <div class="data">
                         <p style="margin-left: 1em;">Sunset</p>
-                        <p style="text-align: center; font-size: 2em">6:49 pm</p>
+                        <p style="text-align: center; font-size: 2em">{{current.sunset}}</p>
                     </div>
                     <div class="forecast_gap"></div>
                     <div class="data">
                         <p style="margin-left: 1em;">Moon</p>
-                        <p style="text-align: center; font-size: 2em">Waning Gibbous</p>
+                        <p style="text-align: center; font-size: 2em">{{time.moom}}</p>
                     </div>
                     <div class="forecast_gap"></div>
                     <div class="data">
@@ -318,81 +318,32 @@
                     <div class="forecast_gap"></div>
                 </div>
             </div>
-
-            <p>{{time.day}}</p>
-            <p>{{time.date}}</p>
-            <p>{{time.hour_12}}:{{time.minute}}:{{time.seconds}} {{time.ampm}}</p>
-            <p>{{time.moom}}</p>
-
-            <h1>META</h1>
-            <p>{{city}}</p>
-
-            <p>{{location.zip}}</p>
-            <p>{{location.coord.lat}}</p>
-            <p>{{location.coord.lon}}</p>
-            <p>{{location.name}}</p>
-
-            <p>{{error}}</p>
-
-
-            <h1>CURRENT</h1>
-            <p>{{current.description_main}}</p>
-            <p>{{current.description_long}}</p>
-            <p>{{current.description_icon}}</p>
-
-            <p class="degree_symbol">{{current.temp.current}}</p>
-            <p class="degree_symbol">{{current.temp.high}}</p>
-            <p class="degree_symbol">{{current.temp.low}}</p>
-
-            <p>{{current.wind.speed}}</p>
-            <p class="degree_symbol">{{current.wind.degree}}</p>
-            <p>{{current.cloud_cover}}</p>
-
-            <p>{{current.rain}}</p>
-            <p>{{current.snow}}</p>
-
-            <p>{{current.sunrise}}</p>
-            <p>{{current.sunset}}</p>
-
-
-            <h1>HOURLY</h1>
-            <h4>Hour 1</h4>
-            <p>{{hourly[0].isDaytime ? 'Day' : 'Night' }}</p>
-            <p>{{hourly[0].number}}</p>
-            <p>{{hourly[0].shortForecast}}</p>
-            <p>{{hourly[0].startTime}}</p>
-            <p class="degree_symbol">{{hourly[0].temperature}}</p>
-            <p>{{hourly[0].emperatureTrend}}</p>
-            <p>{{hourly[0].windSpeed}}</p>
-            <p>{{hourly[0].windDirection}}</p>
-
-            <h1>FORECAST</h1>
-            <h4>Day 1</h4>
-            <p  class="degree_symbol">High - {{forecast[0].max_temp}}</p>
-            <p  class="degree_symbol">Low - {{forecast[0].min_temp}}</p>
-            <p>{{forecast[0].uv}}</p>
-            <p>{{forecast[0].weather.description}}</p>
-
-            <p>{{forecast[0].wind_spd}} mph</p>
-            <p>{{forecast[0].wind_cdir_full}}</p>
-            <p>{{forecast[0].wind_cdir}}</p>
-
-            <p>{{forecast[0].vis}}</p>
-
-            <p>{{forecast[0].pop}}</p>
-
-            <p>{{forecast[0].precip}}</p>
-
-            <p>{{forecast[0].snow}}</p>
-
-            <p>{{forecast[0].dewpt}}</p>
-            <p>{{forecast[0].pres}} mb</p> -->
-
-        </div>
-
-
-
-
         <script src="/js/script.js" type="module"></script>
     </body>
 </html>
+
+<!--
+missing:
+    current
+        feels like
+        percent chance of rain/snow
+        humidity
+        air quality
+        cloud cover
+        visibility
+        uv index
+        tide
+    forecast
+        humidity
+        air quality
+        cloud cover
+        sunrise
+        sunset
+        moon
+        tide
+    alerts/severe weather??
+
+how to
+    make different icons show up?
+    placeholders for no data?
+-->
