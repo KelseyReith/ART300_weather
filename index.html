@@ -27,6 +27,7 @@
     </head>
 
     <body>
+        <!-- top bar -->
         <input placeholder="Enter Your ZIP Code" name="name" id="zip"/>
         <p id="zip_display"></p>
         <div class="results" id="app">
@@ -40,6 +41,7 @@
                     <p style="font-size:1.5em;">({{location.coord.lat}}, {{location.coord.lon}})</p>
                 </div>
             </div>
+            <!-- alert -->
             <div class="alert">
                 <div class="alert_head">
                         <h1>Tornado Watch</h1>
@@ -51,6 +53,7 @@
                     </div>
                 </div>
             </div>
+            <!-- now -->
             <p style="font-size:2em; margin: 2% auto 1% 7%;">Now</p>
             <div class="now">
                 <div class="current_temp">
@@ -62,12 +65,14 @@
                         <p>{{current.temp.high}}° / {{current.temp.low}}°</p>
                     </div>
                 </div>
+                <!-- current description -->
                 <div class="current_description">
-                    <div class="current_icon"></div>
+                    <div v-bind:class="'bigicon-'+current.description_icon"></div>
                     <div class="current_description_words">
                         <p>{{current.description_long}}</p>
                     </div>
                 </div>
+                <!-- current percipitation -->
                 <div class="current_details">
                     <div class="current_percipiation">
                         <div class="percipitation_icon"></div>
@@ -75,6 +80,7 @@
                         <p>{{current.rain}}{{current.snow}}", {{forecast[0].pop}}%</p>
                         </div>
                     </div>
+                    <!-- current wind -->
                     <div class="forecast_gap"></div>
                     <div class="current_wind">
                         <div class="wind_icon"></div>
@@ -84,15 +90,18 @@
                     </div>
                 </div>
             </div>
+            <!-- forecast -->
             <p style="font-size:2em; margin: 7% auto 1% 7%;">Forecast</p>
             <div class="forecast">
                     <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 1 -->
                     <div class="forecast_general">
                         <p>{{forecast[0].weekday}}</p>
-                        <img class="forecast_icon" src="icons/cloud.png" alt="Cloud"/>
+                        <img v-bind:src="'/icon/' + forecast[0].description_icon + '.png'" v-bind:alt="forecast[0].weather.description">
                         <p>{{forecast[0].max_temp}}° / {{forecast[0].min_temp}}°</p>
-                        <p>{{forecast[0].weather.description}}, {{forecast[0].precip}}, {{forecast[0].snow}}, {{forecast[0].pop}}%</p>  
+                        <p>{{forecast[0].weather.description}}</p>
+                        <p>{{forecast[0].pop}}% chance of percipitation</p>
+                        <p>{{forecast[0].precip}}" rain, {{forecast[0].snow}}" snow</p>
                     </div>
                     <div class="forecast_alert">
                         <p></p>
@@ -121,6 +130,8 @@
                         <img class="forecast_icon" src="/icons/01d.png" alt="Sun"/>
                         <p>{{forecast[1].max_temp}}° / {{forecast[1].min_temp}}°</p>
                         <p>{{forecast[1].weather.description}}</p>
+                        <p>{{forecast[1].pop}}% chance of percipitation</p>
+                        <p>{{forecast[1].precip}}" rain, {{forecast[1].snow}}" snow</p>
                     </div>
                     <div class="forecast_alert">
                         <p></p>
@@ -149,6 +160,8 @@
                         <img class="forecast_icon" src="icons/sun.png" alt="Sun"/>
                         <p>{{forecast[2].max_temp}}° / {{forecast[2].min_temp}}°</p>
                         <p>{{forecast[2].weather.description}}</p>
+                        <p>{{forecast[2].pop}}% chance of percipitation</p>
+                        <p>{{forecast[2].precip}}" rain, {{forecast[2].snow}}" snow</p>
                     </div>
                     <div class="forecast_alert">
                         <p></p>
@@ -177,6 +190,8 @@
                         <img class="forecast_icon" src="icons/sun.png" alt="Sun"/>
                         <p>{{forecast[3].max_temp}}° / {{forecast[3].min_temp}}°</p>
                         <p>{{forecast[3].weather.description}}</p>
+                        <p>{{forecast[3].pop}}% chance of percipitation</p>
+                        <p>{{forecast[3].precip}}" rain, {{forecast[3].snow}}" snow</p>
                     </div>
                     <div class="forecast_alert">
                         <p></p>
@@ -205,6 +220,8 @@
                         <img class="forecast_icon" src="icons/thunderstorm.png" alt="Cloud with lightning"/>
                         <p>{{forecast[4].max_temp}}° / {{forecast[4].min_temp}}°</p>
                         <p>{{forecast[4].weather.description}}</p>
+                        <p>{{forecast[4].pop}}% chance of percipitation</p>
+                        <p>{{forecast[4].precip}}" rain, {{forecast[4].snow}}" snow</p>
                     </div>
                     <div class="forecast_alert">
                         <p></p>
@@ -228,8 +245,10 @@
                 </div> 
                 <div class="forecast_gap"></div>
             </div>
+            <!-- details now -->
             <p style="font-size:2em; margin: 3% auto 1% 7%;">Details Now</p>
             <div class="details_now">
+                <!-- first -->
                 <div class="air">
                     <div class="forecast_gap"></div>
                     <div class="data">
@@ -248,6 +267,7 @@
                     </div>
                     <div class="forecast_gap"></div>
                 </div>
+                <!-- second -->
                 <div class="clouds">
                     <div class="forecast_gap"></div>
                     <div class="data">
@@ -261,6 +281,7 @@
                     </div>
                     <div class="forecast_gap"></div>
                 </div>
+                <!-- third -->
                 <div class="time">
                     <div class="forecast_gap"></div>
                     <div class="data">
