@@ -40,14 +40,17 @@ body{
 }
 .alert{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 5fr;
     width: 100%;
-    height: 124px;
+    height: 460px;
     background-color: #F06161;
-    display: none;
+}
+.lower_alert{
+    display: grid;
+    grid-template-columns: .6fr 1fr;
 }
 .alert_head{
-    margin-left: 20%;
+    margin-left: 6.5%;
     font-size: 1.5em;
 }
 .alert_description{
@@ -55,9 +58,9 @@ body{
     margin-top: 5%;
 }
 #map {
-	width: 505px;
-    height: 100%;
-    margin: auto 0 auto 0;
+    width: 33%;
+    height: 300px;
+    margin: 0 auto auto 7%;
 }
 .now{
     display: grid;
@@ -85,18 +88,19 @@ body{
 }
 .current_description{
     display: grid;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: 3fr 1fr;
     background-color: #1C6FA3;
     height: 80%;
     font-size: 1.3em;
 }
-.current_description_visuals{
-    text-align: center;
+.current_icon{
+    background-image: url("/icons/11d.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
 }
-.big_icon{
-    height: 50%;
-    width: 50%;
-    margin-top: 2em;
+.current_description_words{
+    text-align: center;
 }
 .current_details{
     display: grid;
@@ -105,26 +109,30 @@ body{
     height: 80%;
     color: black;
 }
-.current_percipiation{
-    text-align: center;
+.current_percipitation{
+    display: grid;
+    grid-template-rows: 2fr 1fr;
 }
-.current_wind{
-    text-align: center;
+.percipitation_icon{
+    background-image: url("/icons/raindrop.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10%;
 }
-.rain_icon{
-    height: 30%;
-    width: 30%;
-    margin-top: 4em;
+.percipiation_words{
+    text-align: center;
 }
 .wind_icon{
-    height: 30%;
-    width: 30%;
-    margin-top: 4.1em;
-    transform-origin: center;
-    transform: rotate ({{current.wind.degree}}deg);
+    background-image: url("/icons/wind.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10%;
+}
+.wind_words{
+    text-align: center;
 }
 .forecast{
-    height: 725px;
+    height: 525px;
     width: 90%;
     background-color: #9BCBC1;
     display: grid;
@@ -156,7 +164,6 @@ body{
     height: 2em;
     width: 100%;
     font-size: 1.2em;
-    display: none;
 }
 .forecast_data{
     display: grid;
@@ -176,25 +183,26 @@ body{
     margin-left: 7%;
     grid-gap: 2em;
     color: white;
+    margin-bottom: 8em;
 }
 .air{
-    background-color: #1C6FA3;
-    width: 77.5%;
-    display: grid;
-    grid-template-columns: 2em 1fr 2em 1fr 2em 1fr 2em 1fr 2em;
-    margin-left: -2em;
-}
-.clouds{
     background-color: #1C6FA3;
     width: 58.5%;
     display: grid;
     grid-template-columns: 2em 1fr 2em 1fr 2em 1fr 2em;
     margin-left: -2em;
 }
+.clouds{
+    background-color: #1C6FA3;
+    width: 39.75%;
+    display: grid;
+    grid-template-columns: 2em 1fr 2em 1fr 2em;
+    margin-left: -2em;
+}
 .time{
     background-color: #1C6FA3;
-    width: 77.5%;
+    width: 75.5%;
     display: grid;
-    grid-template-columns: 2em 1fr 2em 1fr 2em 1fr 2em 1fr 2em ;
+    grid-template-columns: 2em 1fr 2em 1fr 2em 2fr 2em ;
     margin-left: -2em;
 }

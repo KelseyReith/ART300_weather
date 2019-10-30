@@ -33,7 +33,7 @@
             <div class="top">
                 <div class="location_time">
                     <h1>{{city}}, {{location.state}} {{location.zip}}</h1>
-                    <p style="font-size:1.5em;">{{time.date}}</p>
+                    <p style="font-size:1.5em;">{{time.day}} {{time.date}}</p>
                     <p style="font-size:1.5em;">{{time.hour_12}}:{{time.minute}} {{time.ampm}}</p>
                 </div>
                 <div class="latlon">
@@ -42,12 +42,14 @@
             </div>
             <div class="alert">
                 <div class="alert_head">
-                    <h1>Tornado Watch</h1>
+                        <h1>Tornado Watch</h1>
                 </div>
-                <div class="alert_description">
-                    <p>Clay, Riley, and Pottowatome counties are under a tornado watch until 5:00pm tonight, find shelter.</p>
+                <div class="lower_alert">
+                    <div id="map"></div>
+                    <div class="alert_description">
+                        <p>Clay, Riley, and Pottowatome counties are under a tornado watch until 5:00pm tonight, find shelter.</p>
+                    </div>
                 </div>
-                <div id="map"></div>
             </div>
             <p style="font-size:2em; margin: 2% auto 1% 7%;">Now</p>
             <div class="now">
@@ -56,26 +58,29 @@
                         <h1>{{current.temp.current}}°F</h1>
                     </div>
                     <div class="temp_details">
-                        <p>Feels like °</p>
+                        <p>Feels like {{current.temp.feelslike}}°</p>
                         <p>{{current.temp.high}}° / {{current.temp.low}}°</p>
                     </div>
                 </div>
                 <div class="current_description">
-                    <div class="current_description_visuals">
-                        <p>{{current.description_icon}}</p>
-                        <!-- <img class="big_icon" src="/icons/rain.png" alt="Cloud with Rain"/> -->
+                    <div class="current_icon"></div>
+                    <div class="current_description_words">
                         <p>{{current.description_long}}</p>
                     </div>
                 </div>
                 <div class="current_details">
                     <div class="current_percipiation">
-                        <img class="rain_icon" src="icons/raindrop.png" alt="Raindrop"/>
-                        <p>{{current.rain}}{{current.snow}}"</p>
+                        <div class="percipitation_icon"></div>
+                        <div class="percipitation_words">
+                        <p>{{current.rain}}{{current.snow}}", {{forecast[0].pop}}%</p>
+                        </div>
                     </div>
                     <div class="forecast_gap"></div>
                     <div class="current_wind">
-                        <img class="wind_icon" src="icons/wind.png" alt="Wind"/>
-                        <p>{{current.wind.speed}} {{current.wind.degree}}°</p>
+                        <div class="wind_icon"></div>
+                        <div class="wind_words">
+                            <p>{{current.wind.speed}} {{forecast[0].wind_cdir}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -84,168 +89,140 @@
                     <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 1 -->
                     <div class="forecast_general">
-                        <p>Day 1</p>
+                        <p>{{forecast[0].weekday}}</p>
                         <img class="forecast_icon" src="icons/cloud.png" alt="Cloud"/>
                         <p>{{forecast[0].max_temp}}° / {{forecast[0].min_temp}}°</p>
-                        <p>{{forecast[0].weather.description}}</p>  
+                        <p>{{forecast[0].weather.description}}, {{forecast[0].precip}}, {{forecast[0].snow}}, {{forecast[0].pop}}%</p>  
                     </div>
                     <div class="forecast_alert">
-
+                        <p></p>
                     </div>
                     <div class="forecast_data">
                         <div class="forecast_data_topic">
                             <p>Visibility</p>
-                            <p>Air quality</p>
-                            <p>Cloud cover</p>
                             <p>UV index</p>
-                            <p>Sunrise</p>
-                            <p>Sunset</p>
-                            <p>Moon</p>
-                            <p>Tide</p>
+                            <p>Dewpoint</p>
+                            <p>Wind</p>
+                            <p>Pressure</p>
                         </div>
                         <div class="forecast_data_result">
-                            <p>{{forecast[0].vis}} mi</p> <!-- visibility -->
-                            <p></p> <!-- air quality -->
-                            <p></p> <!-- cloud cover -->
-                            <p>{{forecast[0].uv}}</p> <!-- UV index -->
-                            <p></p> <!-- sunrise -->
-                            <p></p> <!-- sunset -->
-                            <p></p> <!-- moon -->
-                            <p></p> <!-- tide -->
+                            <p>{{forecast[0].vis}} mi</p>
+                            <p>{{forecast[0].uv}}</p>
+                            <p>{{forecast[0].dewpt}}</p>
+                            <p>{{forecast[0].wind_spd}} mph {{forecast[0].wind_cdir}}</p>
+                            <p>{{forecast[0].pres}} mb</p>
                         </div>
                     </div>
                 </div> 
                 <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 2 -->
                     <div class="forecast_general">
-                        <p>Day 2</p>
+                        <p>{{forecast[1].weekday}}</p>
                         <img class="forecast_icon" src="/icons/01d.png" alt="Sun"/>
                         <p>{{forecast[1].max_temp}}° / {{forecast[1].min_temp}}°</p>
                         <p>{{forecast[1].weather.description}}</p>
                     </div>
                     <div class="forecast_alert">
-                        
+                        <p></p>
                     </div>
                     <div class="forecast_data">
                         <div class="forecast_data_topic">
+                            <p>Wind</p>
                             <p>Visibility</p>
-                            <p>Air quality</p>
-                            <p>Cloud cover</p>
                             <p>UV index</p>
-                            <p>Sunrise</p>
-                            <p>Sunset</p>
-                            <p>Moon</p>
-                            <p>Tide</p>
+                            <p>Dewpoint</p>
+                            <p>Pressure</p>
                         </div>
                         <div class="forecast_data_result">
-                            <p>{{forecast[1].vis}} mi</p> <!-- visibility -->
-                            <p></p> <!-- air quality -->
-                            <p></p> <!-- cloud cover -->
-                            <p>{{forecast[1].uv}}</p> <!-- UV index -->
-                            <p></p> <!-- sunrise -->
-                            <p></p> <!-- sunset -->
-                            <p></p> <!-- moon -->
-                            <p></p> <!-- tide -->
+                            <p>{{forecast[1].wind_spd}} mph {{forecast[0].wind_cdir}}</p>
+                            <p>{{forecast[1].vis}} mi</p>
+                            <p>{{forecast[1].uv}}</p>
+                            <p>{{forecast[1].dewpt}}</p>
+                            <p>{{forecast[1].pres}} mb</p>
                         </div>
                     </div>
                 </div> 
                 <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 3 -->
                     <div class="forecast_general">
-                        <p>Day 3</p>
+                        <p>{{forecast[2].weekday}}</p>
                         <img class="forecast_icon" src="icons/sun.png" alt="Sun"/>
                         <p>{{forecast[2].max_temp}}° / {{forecast[2].min_temp}}°</p>
                         <p>{{forecast[2].weather.description}}</p>
                     </div>
                     <div class="forecast_alert">
+                        <p></p>
                     </div>
                     <div class="forecast_data">
                         <div class="forecast_data_topic">
+                            <p>Wind</p>
                             <p>Visibility</p>
-                            <p>Air quality</p>
-                            <p>Cloud cover</p>
                             <p>UV index</p>
-                            <p>Sunrise</p>
-                            <p>Sunset</p>
-                            <p>Moon</p>
-                            <p>Tide</p>
+                            <p>Dewpoint</p>
+                            <p>Pressure</p>
                         </div>
                         <div class="forecast_data_result">
-                            <p>{{forecast[2].vis}} mi</p> <!-- visibility -->
-                            <p></p> <!-- air quality -->
-                            <p></p> <!-- cloud cover -->
-                            <p>{{forecast[2].uv}}</p> <!-- UV index -->
-                            <p></p> <!-- sunrise -->
-                            <p></p> <!-- sunset -->
-                            <p></p> <!-- moon -->
-                            <p></p> <!-- tide -->
+                            <p>{{forecast[2].wind_spd}} mph {{forecast[0].wind_cdir}}</p>
+                            <p>{{forecast[2].vis}} mi</p>
+                            <p>{{forecast[2].uv}}</p>
+                            <p>{{forecast[2].dewpt}}</p>
+                            <p>{{forecast[2].pres}} mb</p>
                         </div>
                     </div>
                 </div>
                 <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 4 -->
                     <div class="forecast_general">
-                        <p>Day 4</p>
+                        <p>{{forecast[3].weekday}}</p>
                         <img class="forecast_icon" src="icons/sun.png" alt="Sun"/>
                         <p>{{forecast[3].max_temp}}° / {{forecast[3].min_temp}}°</p>
                         <p>{{forecast[3].weather.description}}</p>
                     </div>
                     <div class="forecast_alert">
+                        <p></p>
                     </div>
                     <div class="forecast_data">
                         <div class="forecast_data_topic">
+                            <p>Wind</p>
                             <p>Visibility</p>
-                            <p>Air quality</p>
-                            <p>Cloud cover</p>
                             <p>UV index</p>
-                            <p>Sunrise</p>
-                            <p>Sunset</p>
-                            <p>Moon</p>
-                            <p>Tide</p>
+                            <p>Dewpoint</p>
+                            <p>Pressure</p>
                         </div>
                         <div class="forecast_data_result">
-                            <p>{{forecast[3].vis}} mi</p> <!-- visibility -->
-                            <p></p> <!-- air quality -->
-                            <p></p> <!-- cloud cover -->
-                            <p>{{forecast[3].uv}}</p> <!-- UV index -->
-                            <p></p> <!-- sunrise -->
-                            <p></p> <!-- sunset -->
-                            <p></p> <!-- moon -->
-                            <p></p> <!-- tide -->
+                            <p>{{forecast[3].wind_spd}} mph {{forecast[0].wind_cdir}}</p>
+                            <p>{{forecast[3].vis}} mi</p>
+                            <p>{{forecast[3].uv}}</p>
+                            <p>{{forecast[3].dewpt}}</p>
+                            <p>{{forecast[3].pres}} mb</p>
                         </div>
                     </div>
                 </div> 
                 <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 5 -->
                     <div class="forecast_general">
-                        <p>Day 5</p>
+                        <p>{{forecast[4].weekday}}</p>
                         <img class="forecast_icon" src="icons/thunderstorm.png" alt="Cloud with lightning"/>
                         <p>{{forecast[4].max_temp}}° / {{forecast[4].min_temp}}°</p>
-                        <p>{{forecast[4].weather.description}}</p> 
+                        <p>{{forecast[4].weather.description}}</p>
                     </div>
                     <div class="forecast_alert">
-                        <p style="margin: auto;">Severe thunderstorms</p>
+                        <p></p>
                     </div>
                     <div class="forecast_data">
                         <div class="forecast_data_topic">
+                            <p>Wind</p>
                             <p>Visibility</p>
-                            <p>Air quality</p>
-                            <p>Cloud cover</p>
                             <p>UV index</p>
-                            <p>Sunrise</p>
-                            <p>Sunset</p>
-                            <p>Moon</p>
-                            <p>Tide</p>
+                            <p>Dewpoint</p>
+                            <p>Pressure</p>
                         </div>
                         <div class="forecast_data_result">
-                            <p>{{forecast[4].vis}} mi</p> <!-- visibility -->
-                            <p></p> <!-- air quality -->
-                            <p></p> <!-- cloud cover -->
-                            <p>{{forecast[4].uv}}</p> <!-- UV index -->
-                            <p></p> <!-- sunrise -->
-                            <p></p> <!-- sunset -->
-                            <p></p> <!-- moon -->
-                            <p></p> <!-- tide -->
+                            <p>{{forecast[4].wind_spd}} mph {{forecast[0].wind_cdir}}</p>
+                            <p>{{forecast[4].vis}} mi</p>
+                            <p>{{forecast[4].uv}}</p>
+                            <p>{{forecast[4].dewpt}}</p>
+                            <p>{{forecast[4].pres}} mb</p>
                         </div>
                     </div>
                 </div> 
@@ -261,18 +238,13 @@
                     </div>
                     <div class="forecast_gap"></div>
                     <div class="data">
-                        <p style="margin-left: 1em;">Dew point</p>
-                        <p style="text-align: center; font-size: 2em">°</p>
-                    </div>
-                    <div class="forecast_gap"></div>
-                    <div class="data">
                         <p style="margin-left: 1em;">Air quality</p>
-                        <p style="text-align: center; font-size: 2em"></p>
+                        <p style="text-align: center; font-size: 2em">{{current.air_quality}}</p>
                     </div>
                     <div class="forecast_gap"></div>
                     <div class="data">
                         <p style="margin-left: 1em;">Pressure</p>
-                        <p style="text-align: center; font-size: 2em">{{current.pressure}}"</p>
+                        <p style="text-align: center; font-size: 2em">{{current.pressure}} mb</p>
                     </div>
                     <div class="forecast_gap"></div>
                 </div>
@@ -280,17 +252,12 @@
                     <div class="forecast_gap"></div>
                     <div class="data">
                         <p style="margin-left: 1em;">Cloud cover</p>
-                        <p style="text-align: center; font-size: 2em">{{current.cloud_cover}}</p>
-                    </div>
-                    <div class="forecast_gap"></div>
-                    <div class="data">
-                        <p style="margin-left: 1em;">Visibility</p>
-                        <p style="text-align: center; font-size: 2em">mi</p>
+                        <p style="text-align: center; font-size: 2em">{{current.cloud_cover}}%</p>
                     </div>
                     <div class="forecast_gap"></div>
                     <div class="data">
                         <p style="margin-left: 1em;">UV index</p>
-                        <p style="text-align: center; font-size: 2em"></p>
+                        <p style="text-align: center; font-size: 2em">{{current.uv}}</p>
                     </div>
                     <div class="forecast_gap"></div>
                 </div>
@@ -311,11 +278,6 @@
                         <p style="text-align: center; font-size: 2em">{{time.moom}}</p>
                     </div>
                     <div class="forecast_gap"></div>
-                    <div class="data">
-                        <p style="margin-left: 1em;">Tide</p>
-                        <p style="text-align: center; font-size: 2em"></p>
-                    </div>
-                    <div class="forecast_gap"></div>
                 </div>
             </div>
         <script src="/js/script.js" type="module"></script>
@@ -324,24 +286,6 @@
 
 <!--
 missing:
-    current
-        feels like
-        percent chance of rain/snow
-        humidity
-        air quality
-        cloud cover
-        visibility
-        uv index
-        tide
-    forecast
-        humidity
-        air quality
-        cloud cover
-        sunrise
-        sunset
-        moon
-        tide
-
 how to
     make different icons show up?
     placeholders for no data?
