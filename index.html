@@ -74,10 +74,10 @@
                 </div>
                 <!-- current percipitation -->
                 <div class="current_details">
-                    <div class="current_percipiation">
+                    <div class="current_percipitation">
                         <div class="percipitation_icon"></div>
                         <div class="percipitation_words">
-                        <p>{{current.rain}}{{current.snow}}", {{forecast[0].pop}}%</p>
+                            <p>{{current.rain}}{{current.snow}}", {{forecast[0].pop}}%</p>
                         </div>
                     </div>
                     <!-- current wind -->
@@ -96,12 +96,14 @@
                     <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 1 -->
                     <div class="forecast_general">
-                        <p>{{forecast[0].weekday}}</p>
-                        <img v-bind:src="'/icon/' + forecast[0].description_icon + '.png'" v-bind:alt="forecast[0].weather.description">
-                        <p>{{forecast[0].max_temp}}° / {{forecast[0].min_temp}}°</p>
-                        <p>{{forecast[0].weather.description}}</p>
-                        <p>{{forecast[0].pop}}% chance of percipitation</p>
-                        <p>{{forecast[0].precip}}" rain, {{forecast[0].snow}}" snow</p>
+                        <div><p style="font-weight: 700;">{{forecast[0].weekday}}</p></div>
+                        <div v-bind:class="'foreicon-'+forecast[0].description_icon"></div>
+                        <div>
+                            <p style="font-weight: 700;">{{forecast[0].max_temp}}° / {{forecast[0].min_temp}}°</p>
+                            <p>{{forecast[0].weather.description}}</p>
+                            <p>{{forecast[0].pop}}% chance of percipitation</p>
+                            <p>{{forecast[0].precip}}" rain, {{forecast[0].snow}}" snow</p>
+                        </div>
                     </div>
                     <div class="forecast_alert">
                         <p></p>
@@ -126,12 +128,14 @@
                 <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 2 -->
                     <div class="forecast_general">
-                        <p>{{forecast[1].weekday}}</p>
-                        <img class="forecast_icon" src="/icons/01d.png" alt="Sun"/>
-                        <p>{{forecast[1].max_temp}}° / {{forecast[1].min_temp}}°</p>
-                        <p>{{forecast[1].weather.description}}</p>
-                        <p>{{forecast[1].pop}}% chance of percipitation</p>
-                        <p>{{forecast[1].precip}}" rain, {{forecast[1].snow}}" snow</p>
+                        <div><p style="font-weight: 700;">{{forecast[1].weekday}}</p></div>
+                        <div v-bind:class="'foreicon-'+forecast[1].description_icon"></div>
+                        <div>
+                            <p style="font-weight: 700;">{{forecast[1].max_temp}}° / {{forecast[1].min_temp}}°</p>
+                            <p>{{forecast[1].weather.description}}</p>
+                            <p>{{forecast[1].pop}}% chance of percipitation</p>
+                            <p>{{forecast[1].precip}}" rain, {{forecast[1].snow}}" snow</p>
+                        </div>
                     </div>
                     <div class="forecast_alert">
                         <p></p>
@@ -152,16 +156,18 @@
                             <p>{{forecast[1].pres}} mb</p>
                         </div>
                     </div>
-                </div> 
+                </div>
                 <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 3 -->
                     <div class="forecast_general">
-                        <p>{{forecast[2].weekday}}</p>
-                        <img class="forecast_icon" src="icons/sun.png" alt="Sun"/>
-                        <p>{{forecast[2].max_temp}}° / {{forecast[2].min_temp}}°</p>
-                        <p>{{forecast[2].weather.description}}</p>
-                        <p>{{forecast[2].pop}}% chance of percipitation</p>
-                        <p>{{forecast[2].precip}}" rain, {{forecast[2].snow}}" snow</p>
+                        <div><p style="font-weight: 700;">{{forecast[2].weekday}}</p></div>
+                        <div v-bind:class="'foreicon-'+forecast[2].description_icon"></div>
+                        <div>
+                            <p style="font-weight: 700;">{{forecast[2].max_temp}}° / {{forecast[2].min_temp}}°</p>
+                            <p>{{forecast[2].weather.description}}</p>
+                            <p>{{forecast[2].pop}}% chance of percipitation</p>
+                            <p>{{forecast[2].precip}}" rain, {{forecast[2].snow}}" snow</p>
+                        </div>
                     </div>
                     <div class="forecast_alert">
                         <p></p>
@@ -186,12 +192,14 @@
                 <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 4 -->
                     <div class="forecast_general">
-                        <p>{{forecast[3].weekday}}</p>
-                        <img class="forecast_icon" src="icons/sun.png" alt="Sun"/>
-                        <p>{{forecast[3].max_temp}}° / {{forecast[3].min_temp}}°</p>
-                        <p>{{forecast[3].weather.description}}</p>
-                        <p>{{forecast[3].pop}}% chance of percipitation</p>
-                        <p>{{forecast[3].precip}}" rain, {{forecast[3].snow}}" snow</p>
+                        <div><p style="font-weight: 700;">{{forecast[3].weekday}}</p></div>
+                        <div v-bind:class="'foreicon-'+forecast[3].description_icon"></div>
+                        <div>
+                            <p style="font-weight: 700;">{{forecast[3].max_temp}}° / {{forecast[3].min_temp}}°</p>
+                            <p>{{forecast[3].weather.description}}</p>
+                            <p>{{forecast[3].pop}}% chance of percipitation</p>
+                            <p>{{forecast[3].precip}}" rain, {{forecast[3].snow}}" snow</p>
+                        </div>
                     </div>
                     <div class="forecast_alert">
                         <p></p>
@@ -216,12 +224,14 @@
                 <div class="forecast_gap"></div>
                 <div class="day"> <!-- day 5 -->
                     <div class="forecast_general">
-                        <p>{{forecast[4].weekday}}</p>
-                        <img class="forecast_icon" src="icons/thunderstorm.png" alt="Cloud with lightning"/>
-                        <p>{{forecast[4].max_temp}}° / {{forecast[4].min_temp}}°</p>
-                        <p>{{forecast[4].weather.description}}</p>
-                        <p>{{forecast[4].pop}}% chance of percipitation</p>
-                        <p>{{forecast[4].precip}}" rain, {{forecast[4].snow}}" snow</p>
+                        <div><p style="font-weight: 700;">{{forecast[4].weekday}}</p></div>
+                        <div v-bind:class="'foreicon-'+forecast[4].description_icon"></div>
+                        <div>
+                            <p style="font-weight: 700;">{{forecast[4].max_temp}}° / {{forecast[4].min_temp}}°</p>
+                            <p>{{forecast[4].weather.description}}</p>
+                            <p>{{forecast[4].pop}}% chance of percipitation</p>
+                            <p>{{forecast[4].precip}}" rain, {{forecast[4].snow}}" snow</p>
+                        </div>
                     </div>
                     <div class="forecast_alert">
                         <p></p>

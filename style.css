@@ -18,7 +18,7 @@ body{
 }
 .top{
     display:grid;
-    height: 222px;
+    height: 14em;
     width: 100%;
     background-color: #1C6FA3;
     grid-template-columns: 1fr 1fr 1fr;
@@ -66,7 +66,7 @@ body{
 .now{
     display: grid;
     width: 86%;
-    height: 480px;
+    height: 30em;
     margin: auto;
     grid-template-columns: 1fr 1fr .5fr;
     color: white;
@@ -106,28 +106,32 @@ body{
 }
 .current_percipitation{
     display: grid;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: 3fr 1fr;
 }
 .percipitation_icon{
-    background-image: url("/icons/raindrop.png");
+    background-image: url("/icons/icon-raindrop.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 10%;
+    background-size: 35%;
 }
-.percipiation_words{
+.percipitation_words{
     text-align: center;
 }
+.current_wind{
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+}
 .wind_icon{
-    background-image: url("/icons/wind.png");
+    background-image: url("/icons/icon-wind.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 10%;
+    background-size: 40%;
 }
 .wind_words{
     text-align: center;
 }
 .forecast{
-    height: 625px;
+    height: 37em;
     width: 90%;
     background-color: #9BCBC1;
     display: grid;
@@ -146,8 +150,10 @@ body{
     background-color: white;
 }
 .forecast_general{
-    margin: auto;
+    margin: 0 auto auto auto;
     font-size: 1.5em;
+    display: grid;
+    grid-template-rows: .5fr 1fr 2fr;
 }
 .forecast_icon{
     height: 50%;
@@ -163,8 +169,10 @@ body{
 }
 .forecast_data{
     display: grid;
-    grid-template-columns: 1fr 1.3fr;
+    grid-template-columns: 1fr 1fr;
     line-height: 2.5em;
+    margin-top: 2em;
+    font-size: 1.3em;
 }
 .forecast_data_topic{
     text-align: left;
@@ -174,7 +182,7 @@ body{
 }
 .details_now{
     display: grid;
-    height: 502px;
+    height: 35em;
     grid-template-rows: 1fr 1fr 1fr;
     margin-left: 7%;
     grid-gap: 2em;
@@ -222,7 +230,7 @@ body{
     background-position: center;
     background-size: 50%;
 }
-.bigcon-04d{
+.bigicon-04d{
     background-image: url("/icons/icon-04d.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -240,8 +248,20 @@ body{
     background-position: center;
     background-size: 50%;
 }
+.bigicon-10d{
+    background-image: url("/icons/icon-10d.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
 .bigicon-13d{
     background-image: url("/icons/icon-13d.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+.bigicon-50d{
+    background-image: url("/icons/icon-50d.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 50%;
@@ -251,3 +271,57 @@ body{
 /* current wind icons */
 
 /* forecast icons */
+.foreicon-01d{
+    background-image: url("/icons/icon-01d.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+.foreicon-02d{
+    background-image: url("/icons/icon-02d.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+.foreicon-03d{
+    background-image: url("/icons/icon-03d.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+.foreicon-04d{
+    background-image: url("/icons/icon-04d.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+.foreicon-09d{
+    background-image: url("/icons/icon-05d.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+.foreicon-11d{
+    background-image: url("/icons/icon-11d.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+.foreicon-10d{
+    background-image: url("/icons/icon-10d.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+.foreicon-13d{
+    background-image: url("/icons/icon-13d.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+.foreicon-50d{
+    background-image: url("/icons/icon-50d.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
