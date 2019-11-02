@@ -169,7 +169,7 @@ body{
 }
 .forecast_data{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.5fr;
     line-height: 2.5em;
     margin-top: 2em;
     font-size: 1.3em;
